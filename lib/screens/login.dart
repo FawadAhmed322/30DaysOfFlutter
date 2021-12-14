@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/utils/utils.dart';
 
 class Login extends StatelessWidget {
   @override
@@ -35,10 +36,13 @@ class Login extends StatelessWidget {
                   ),
                   ElevatedButton(
                     child: const Text('Login'),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, MyRoutes.homeRoute);
+                    },
                     style: TextButton.styleFrom(
                       primary: Colors.white,
-                      backgroundColor: Colors.blueGrey,
+                      backgroundColor: Colors.deepPurple,
+                      minimumSize: const Size(150, 40),
                     ),
                   ),
                 ],
