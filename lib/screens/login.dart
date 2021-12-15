@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/utils/utils.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  String name = '';
+  bool changeButton = false;
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -16,14 +24,25 @@ class Login extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
+            Text(
+              'Welcome $name',
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
               child: Column(
                 children: [
-                  const TextField(
-                    decoration: InputDecoration(
+                  TextField(
+                    decoration: const InputDecoration(
                       hintText: 'Enter your email',
                     ),
+                    onChanged: (value) {
+                      name = value;
+                      setState(() {});
+                    },
                   ),
                   const TextField(
                     decoration: InputDecoration(
@@ -34,15 +53,32 @@ class Login extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  ElevatedButton(
-                    child: const Text('Login'),
-                    onPressed: () {
+                  InkWell(
+                    onTap: () async {
+                      setState(() {
+                        changeButton = !changeButton;
+                      });
+                      await Future.delayed(const Duration(seconds: 1));
                       Navigator.pushNamed(context, MyRoutes.homeRoute);
                     },
-                    style: TextButton.styleFrom(
-                      primary: Colors.white,
-                      backgroundColor: Colors.deepPurple,
-                      minimumSize: const Size(150, 40),
+                    child: AnimatedContainer(
+                      child: changeButton
+                          ? const Icon(
+                              Icons.done,
+                              color: Colors.white,
+                            )
+                          : const Text(
+                              'Login',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                      duration: const Duration(seconds: 1),
+                      width: changeButton ? 50 : 150,
+                      height: 50,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Colors.deepPurple,
+                        borderRadius: BorderRadius.circular(25),
+                      ),
                     ),
                   ),
                 ],
