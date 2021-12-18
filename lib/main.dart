@@ -5,6 +5,7 @@ import 'package:flutter_catalog/screens/home.dart';
 import 'package:flutter_catalog/screens/login.dart';
 import 'package:flutter_catalog/utils/utils.dart';
 import 'package:flutter_catalog/utils/utils.dart';
+import 'package:flutter_catalog/widgets/themes.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,13 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // themeMode: ThemeMode.dark,
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        fontFamily: GoogleFonts.lato().fontFamily,
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-      ),
+      theme: MyThemes.getLightTheme(context),
+      darkTheme: MyThemes.getDarkTheme(context),
       routes: {
         '/': (context) => Login(),
         MyRoutes.homeRoute: (context) => Home(),
