@@ -1,5 +1,19 @@
+class CatalogModel {
+  static final items = [
+    Item(
+      id: 1,
+      name: "iPhone 12 Pro",
+      desc: "Apple iPhone 12th Gen",
+      price: 60000,
+      color: "#33505a",
+      image:
+          "https://assets.swappie.com/swappie-product-iphone-12-pro-max-pacific-blue.png",
+    ),
+  ];
+}
+
 class Item {
-  late final String id;
+  late final int id;
   late final String name;
   late final String desc;
   late final num price;
@@ -18,7 +32,7 @@ class Item {
 
 final products = [
   Item(
-    id: "Codepur001",
+    id: 1,
     name: "iPhone 12 Pro",
     desc: "Apple iPhone 12th Gen",
     price: 60000,
